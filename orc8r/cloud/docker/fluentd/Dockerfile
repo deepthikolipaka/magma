@@ -11,6 +11,10 @@
 
 FROM fluent/fluentd:v1.14.6-debian-1.0
 USER root
+# Pin multi_json for Ruby 2.7 compatibility
+RUN gem install multi_json -v 1.15.0 --no-document
+# Pin excon for Ruby 2.7 compatibility
+RUN gem install excon -v 1.2.5 --no-document
 RUN gem install \
     elasticsearch:7.13.0 \
     fluent-plugin-elasticsearch:5.2.1 \
